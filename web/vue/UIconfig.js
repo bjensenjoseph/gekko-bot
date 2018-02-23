@@ -11,13 +11,13 @@ const CONFIG = {
     timeout: 120000 // 2 minutes
   },
   ui: {
-    ssl: true,
-    host: '138.68.255.192',
-    port: 443,
-    path: '/' // change this if you are serving from something like `example.com/gekko`
+    ssl: false,
+    host: 'localhost',
+    port: 3000,
+    path: '/'
   },
   adapter: 'sqlite'
-};
+}
 
 if(typeof window === 'undefined')
   module.exports = CONFIG;
