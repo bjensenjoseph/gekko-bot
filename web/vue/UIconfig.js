@@ -12,7 +12,7 @@ const CONFIG = {
   },
   ui: {
     ssl: true,
-    host: 'gekko.example.com',
+    host: '138.68.255.192',
     port: 443,
     path: '/' // change this if you are serving from something like `example.com/gekko`
   },
