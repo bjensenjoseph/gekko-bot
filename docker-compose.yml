@@ -29,7 +29,7 @@ services:
     restart: always
     image: jwilder/nginx-proxy
     ports:
-     - "80:80"
+     - "3001:3001"
     volumes:
      - /var/run/docker.sock:/tmp/docker.sock:ro
      - /home/ec2-user/nginx.conf:/etc/nginx/nginx.conf:ro
