@@ -32,8 +32,8 @@ services:
      - "80:80"
     volumes:
      - /var/run/docker.sock:/tmp/docker.sock:ro
-     - /home/ec2-user/nginx.conf:/etc/nginx/nginx.conf:ro   \
-     - /etc/proxy-users/.htpasswd:/etc/nginx/.htpasswd:ro     \
+     - /home/ec2-user/nginx.conf:/etc/nginx/nginx.conf:ro
+     - /etc/proxy-users/.htpasswd:/etc/nginx/.htpasswd:ro
 ## optionally uncomment if you wish to use postgresql as a db
 #  postgresql:
 #    restart: always
