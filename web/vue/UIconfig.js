@@ -11,9 +11,9 @@ const CONFIG = {
     timeout: 120000 // 2 minutes
   },
   ui: {
-    ssl: false,
-    host: '138.68.255.192',
-    port: 3001,
+    ssl: true,
+    host: 'gekko.example.com',
+    port: 443,
     path: '/'
   },
   adapter: 'sqlite'
