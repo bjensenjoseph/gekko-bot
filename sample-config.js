@@ -34,7 +34,7 @@ config.tradingAdvisor = {
   enabled: true,
   method: 'DEMA',
   candleSize: 1,
-  historySize: 10,
+  historySize: 600,
   adapter: 'sqlite'
 };
 
