@@ -1,7 +1,7 @@
 // Everything is explained here:
 // @link https://gekko.wizb.it/docs/commandline/plugins.html
 
-var config = {};
+const config = {};
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 //                          GENERAL SETTINGS
@@ -16,15 +16,15 @@ config.debug = true; // for additional logging / debugging
 config.watch = {
 
   // see https://gekko.wizb.it/docs/introduction/supported_exchanges.html
-  exchange: 'poloniex',
-  currency: 'USDT',
-  asset: 'BTC',
+  exchange: 'gdax',
+  currency: 'USD',
+  asset: 'LTC',
 
   // You can set your own tickrate (refresh rate).
   // If you don't set it, the defaults are 2 sec for
   // okcoin and 20 sec for all other exchanges.
   // tickrate: 20
-}
+};
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 //                       CONFIGURING TRADING ADVICE
@@ -32,11 +32,11 @@ config.watch = {
 
 config.tradingAdvisor = {
   enabled: true,
-  method: 'MACD',
+  method: 'DEMA',
   candleSize: 1,
-  historySize: 3,
+  historySize: 10,
   adapter: 'sqlite'
-}
+};
 
 // Exponential Moving Averages settings:
 config.DEMA = {
@@ -166,7 +166,7 @@ config.StochRSI = {
 // custom settings:
 config.custom = {
   my_custom_setting: 10,
-}
+};
 
 config['talib-macd'] = {
   parameters: {
@@ -178,7 +178,7 @@ config['talib-macd'] = {
     down: -0.025,
     up: 0.025,
   }
-}
+};
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 //                       CONFIGURING PLUGINS
@@ -186,7 +186,7 @@ config['talib-macd'] = {
 
 // do you want Gekko to simulate the profit of the strategy's own advice?
 config.paperTrader = {
-  enabled: true,
+  enabled: false,
   // report the profit in the currency or the asset?
   reportInCurrency: true,
   // start balance, on what the current balance is compared with
@@ -201,28 +201,28 @@ config.paperTrader = {
   feeUsing: 'maker',
   // how much slippage/spread should Gekko assume per trade?
   slippage: 0.05,
-}
+};
 
 config.performanceAnalyzer = {
   enabled: true,
   riskFreeReturn: 5
-}
+};
 
 // Want Gekko to perform real trades on buy or sell advice?
 // Enabling this will activate trades for the market being
 // watched by `config.watch`.
 config.trader = {
-  enabled: false,
-  key: '',
-  secret: '',
+  enabled: true,
+  key: '2d7403344e309becb8de5ea2378debfa',
+  secret: 'pMBkbtRjaVDHWM+IP42b7oIOT/CfnOguahB4fZlTtmknSC4gTsoeuF+JR7VXxHB+bKJ2LDB7Y+pCaGoHfxwfFA==',
   username: '', // your username, only required for specific exchanges.
-  passphrase: '' // GDAX, requires a passphrase.
-}
+  passphrase: '!A2s#D4f%G6h' // GDAX, requires a passphrase.
+};
 
 config.adviceLogger = {
-  enabled: false,
+  enabled: true,
   muteSoft: true // disable advice printout if it's soft
-}
+};
 
 config.pushover = {
   enabled: false,
@@ -231,7 +231,7 @@ config.pushover = {
   tag: '[GEKKO]',
   key: '',
   user: ''
-}
+};
 
 // want Gekko to send a mail on buy or sell advice?
 config.mailer = {
@@ -267,7 +267,7 @@ config.mailer = {
   to: '',       // 'me@somedomain.com, me@someotherdomain.com'
   ssl: true,        // Use SSL (true for Gmail)
   port: '',       // Set if you don't want to use the default port
-}
+};
 
 config.pushbullet = {
     // sends pushbullets if true
@@ -290,7 +290,7 @@ config.kodi = {
   host: 'http://ip-or-hostname:8080/jsonrpc',
   enabled: false,
   sendMessageOnStart: true,
-}
+};
 
 config.ircbot = {
   enabled: false,
@@ -299,14 +299,14 @@ config.ircbot = {
   channel: '#your-channel',
   server: 'irc.freenode.net',
   botName: 'gekkobot'
-}
+};
 
 config.telegrambot = {
   enabled: false,
   emitUpdates: false,
   token: 'YOUR_TELEGRAM_BOT_TOKEN',
   botName: 'gekkobot'
-}
+};
 
 config.twitter = {
     // sends pushbullets if true
@@ -335,7 +335,7 @@ config.xmppbot = {
   client_port: 5222,
   status_msg: 'I\'m online',
   receiver: 'jabber_id_for_updates'
-}
+};
 
 config.campfire = {
   enabled: false,
@@ -344,7 +344,7 @@ config.campfire = {
   roomId: null,
   apiKey: '',
   account: ''
-}
+};
 
 config.redisBeacon = {
   enabled: false,
@@ -359,7 +359,7 @@ config.redisBeacon = {
   broadcast: [
     'candle'
   ]
-}
+};
 
 config.slack = {
   enabled: false,
@@ -367,7 +367,7 @@ config.slack = {
   sendMessageOnStart: true,
   muteSoft: true,
   channel: '' // #tradebot
-}
+};
 
 config.ifttt = {
   enabled: false,
@@ -375,16 +375,16 @@ config.ifttt = {
   makerKey: '',
   muteSoft: true,
   sendMessageOnStart: true
-}
+};
 
 config.candleWriter = {
   enabled: false
-}
+};
 
 config.adviceWriter = {
   enabled: false,
   muteSoft: true,
-}
+};
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 //                       CONFIGURING ADAPTER
@@ -401,7 +401,7 @@ config.sqlite = {
   journalMode: require('./web/isWindows.js') ? 'DELETE' : 'WAL',
 
   dependencies: []
-}
+};
 
   // Postgres adapter example config (please note: requires postgres >= 9.5):
 config.postgresql = {
@@ -414,7 +414,7 @@ config.postgresql = {
     module: 'pg',
     version: '6.1.0'
   }]
-}
+};
 
 // Mongodb adapter, requires mongodb >= 3.3 (no version earlier tested)
 config.mongodb = {
@@ -425,7 +425,7 @@ config.mongodb = {
     module: 'mongojs',
     version: '2.4.0'
   }]
-}
+};
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 //                       CONFIGURING BACKTESTING
@@ -437,7 +437,7 @@ config.mongodb = {
 config.backtest = {
   daterange: 'scan',
   batchSize: 50
-}
+};
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 //                       CONFIGURING IMPORTING
@@ -448,7 +448,7 @@ config.importer = {
     // NOTE: these dates are in UTC
     from: "2017-11-01 00:00:00"
   }
-}
+};
 
 // set this to true if you understand that Gekko will
 // invest according to how you configured the indicators.
